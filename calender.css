@@ -1,0 +1,215 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    user-select: none;
+    /* filter: invert(1) hue-rotate(90deg); */
+}
+
+body {
+    background: #1089ff;
+    display: grid;
+    place-items: center;
+    padding: 6%;
+    font-family: cursive;
+}
+
+.box {
+    width: 450px;
+    position: relative;
+    background: #23374d;
+    border-radius: 5%;
+    text-transform: capitalize;
+    font-size: 25px;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.3px solid rgba(255, 255, 255, 0.754);
+    padding: 15px 40px;
+    color: #1089ff;
+}
+
+.month {
+    cursor: pointer;
+}
+
+.year-group {
+    position: relative;
+}
+
+.year {
+    cursor: pointer;
+}
+
+.year-input-box {
+    position: absolute;
+    right: -300px;
+    transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.year-input {
+    width: 250px;
+    line-height: 180%;
+    font-family: inherit;
+    outline: none;
+    padding-left: 20%;
+}
+
+.year-input-box::after {
+    position: absolute;
+    content: '';
+    display: block;
+    height: 85%;
+    width: 40px;
+    border-radius: 50%;
+    inset: 20% -7%;
+    background-color: #23374d;
+}
+
+.box-body {
+    padding: 20px;
+}
+
+.weekdays {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.weekdays li {
+    width: 50px;
+    line-height: 14px;
+    font-size: 14px;
+    color: rgb(163, 163, 163);
+    text-align: center;
+    margin: 0 3px;
+}
+
+.days {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.day {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 8px;
+    font-size: 17px;
+    color: #eeeeee;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.full-day:hover {
+    transform: translateY(-2px);
+}
+
+.full-day::after,
+.full-day::before {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-radius: 10%;
+    transition: height 0.3s ease-out, width 0.3s ease-out;
+}
+
+.full-day::before {
+    right: 0;
+    bottom: 0;
+}
+
+.full-day::after {
+    top: 0;
+    left: 0;
+}
+
+.full-day:hover::before {
+    width: 40px;
+    height: 40px;
+    border-right: 1px solid #1089ff;
+    border-bottom: 1px solid #1089ff;
+}
+
+.full-day:hover::after {
+    width: 40px;
+    height: 40px;
+    border-left: 1px solid #1089ff;
+    border-top: 1px solid #1089ff;
+}
+
+.active {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 8px;
+    color: #eeeeee;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    background-color: white;
+    color: #1089ff;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 10%;
+    animation: today 0.5s ease-out backwards;
+}
+
+@keyframes today {
+    0% {
+        transform: scale(0.7);
+        height: 40px;
+    }
+    50% {
+        height: 40px;
+    }
+    70% {
+        transform: scale(1) translateY(-5px);
+        height: 38px;
+    }
+    100% {
+        transform: translateY(0px);
+        height: 40px;
+    }
+}
+
+.months-list {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    transition: 0.5s;
+    background: #e5e5e5;
+    border-radius: 5%;
+    font-size: 20px;
+}
+
+.months-list span {
+    width: 30%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.months-list-show {
+    left: 0;
+}
+
+.btn-update {
+    position: absolute;
+}
